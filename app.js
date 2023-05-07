@@ -1,6 +1,6 @@
-let canvas = document.getElementById('game');
-let context = canvas.getContext('2d');
-let ballradius = 9;
+const canvas = document.getElementById('game');
+const context = canvas.getContext('2d');
+const ballradius = 9;
 let x = canvas.width / (Math.floor(Math.random() * Math.random() * 10) + 3);
 let y = canvas.height - 40;
 let dx = 2;
@@ -42,7 +42,7 @@ function mouseMoveHandler(event)
     var relativeX = event.clientX - canvas.offsetLeft;
     if(relativeX > 0 && relativeX < canvas.width)
     {
-        paddleHeight = relativeX - paddleWidth / 2;
+        paddleX = relativeX - paddleWidth / 2;
     }
 }
 
@@ -50,7 +50,7 @@ function mouseMoveHandler(event)
 function drawPaddle()
 {
     context.beginPath();
-    context.roundRect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight, 30);
+    context.roundRect(paddleX, (canvas.height - paddleHeight), paddleWidth, paddleHeight, 30);
     context.fillStyle = '#333';
     context.fill();
     context.closePath();
@@ -85,8 +85,7 @@ function drawBricks()
                 context.fill();
                 context.closePath();
             }
-        }
-        
+        }       
     }
 }
 
